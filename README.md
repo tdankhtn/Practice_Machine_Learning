@@ -36,4 +36,34 @@ Tập dữ liệu chứa các thuộc tính sau, dùng để dự đoán việc 
 
 Có thể cài đặt chúng bằng pip:
 ```bash
-pip install pandas numpy matplotlib seaborn scikit-learn imblearn ydata-profiling
+pip install pandas numpy matplotlib seaborn scikit-learn imblearn ydata-profiling.
+
+## Phân tích dữ liệu
+- Xác định các cột số và cột phân loại.
+- Kiểm tra các giá trị thiếu trong mỗi cột.
+- Hiển thị tóm tắt thống kê cơ bản của các cột số để hiểu phân phối dữ liệu.
+- Sử dụng ydata-profiling để tạo báo cáo chi tiết về dữ liệu, bao gồm thống kê, cảnh báo.
+
+## Kỹ thuật Feature Engineering
+Để chuẩn bị dữ liệu cho mô hình học máy, các bước kỹ thuật feature engineering được áp dụng:
+- Các cột phân loại được chuyển đổi thành mã số.
+- Kỹ thuật Oversampling SMOTE được áp dụng để cân bằng tập dữ liệu, giúp xử lý các trường hợp dữ liệu không cân bằng.
+
+## Huấn luyện và Đánh giá mô hình
+Dự án sử dụng các mô hình học máy sau:
+- Random Forest Classifier: Một mô hình cây quyết định ensemble.
+- Logistic Regression: Một mô hình phân loại tuyến tính.
+Cả hai mô hình đều được huấn luyện bằng GridSearchCV để tìm ra các siêu tham số tốt nhất, đảm bảo hiệu suất tối ưu. Các siêu tham số được tìm kiếm bao gồm:
+- Random Forest: n_estimators, max_depth, min_samples_split, min_samples_leaf, max_features, bootstrap.
+- Logistic Regression: C (hệ số nghịch đảo của cường độ điều hòa), penalty (l1 hoặc l2), solver (lbfgs, liblinear, v.v.).
+
+Các mô hình được đánh giá dựa trên các chỉ số hiệu suất như accuracy_score, precision_score, recall_score và f1_score, đặc biệt là f1_weighted cho GridSearchCV.
+
+Kết quả
+- Mô hình Random Forest tốt nhất đã tìm thấy các tham số tối ưu như max_depth=10, max_features='log2', min_samples_leaf=2, n_estimators=10.
+- Mô hình Logistic Regression tốt nhất đã tìm thấy C=10, penalty='l2' và solver='lbfgs'.
+Notebook thực hiện việc chia dữ liệu thành tập huấn luyện và tập kiểm tra (tỷ lệ 80/20) sau khi áp dụng SMOTE.
+- Kích thước tập huấn luyện: (2043, 8)
+- Kích thước tập kiểm tra: (511, 8)
+
+Chi tiết về hiệu suất của từng mô hình (ví dụ: độ chính xác, độ nhạy, F1-score) được tính toán sau khi huấn luyện mô hình.
