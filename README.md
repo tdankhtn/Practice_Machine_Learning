@@ -37,6 +37,7 @@ Tập dữ liệu chứa các thuộc tính sau, dùng để dự đoán việc 
 Có thể cài đặt chúng bằng pip:
 ```bash
 pip install pandas numpy matplotlib seaborn scikit-learn imblearn ydata-profiling.
+```
 
 ## Phân tích dữ liệu
 - Xác định các cột số và cột phân loại.
