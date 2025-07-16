@@ -64,6 +64,7 @@ Các mô hình được đánh giá dựa trên các chỉ số hiệu suất nh
 ## Kết quả
 - Mô hình Random Forest tốt nhất đã tìm thấy các tham số tối ưu như max_depth=10, max_features='log2', min_samples_leaf=2, n_estimators=10.
 - Mô hình Logistic Regression tốt nhất đã tìm thấy C=10, penalty='l2' và solver='lbfgs'.
+
 Notebook thực hiện việc chia dữ liệu thành tập huấn luyện và tập kiểm tra (tỷ lệ 80/20) sau khi áp dụng SMOTE.
 - Kích thước tập huấn luyện: (2043, 8)
 - Kích thước tập kiểm tra: (511, 8)
